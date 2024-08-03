@@ -25,8 +25,8 @@ func main() {
 
 func send(nc *nats.Conn) {
 	start := time.Now()
-	for time.Until(start) <= time.Duration(time.Duration.Seconds(10)) {
-		time.Sleep(time.Duration(time.Duration.Seconds(1)))
+	for time.Since(start) <= time.Duration(10*time.Second) {
+		time.Sleep(time.Duration(time.Second))
 		nc.Publish("test", []byte("foobar"))
 	}
 }
