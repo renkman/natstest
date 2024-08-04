@@ -1,3 +1,8 @@
+using System.Text.Json;
+using NATS.Client.Core;
+
+const string NatsSubject = "message";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,16 +19,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/weatherforecast", async () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    await using var nats = new NatsConnection(new NatsOpts { Url = "nats://nats:4222" });
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -31,6 +37,8 @@ app.MapGet("/weatherforecast", () =>
             summaries[Random.Shared.Next(summaries.Length)]
         ))
         .ToArray();
+    var message = JsonSerializer.Serialize(forecast);
+    await nats.PublishAsync(NatsSubject, message);
     return forecast;
 })
 .WithName("GetWeatherForecast")

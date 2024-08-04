@@ -19,6 +19,8 @@ services:
       target: app
     image: renkman/receiver
     container_name: receiver
+    environment:
+      - NATS_URL=nats://nats:4222
     links:
       - nats
     depends_on:
@@ -33,6 +35,8 @@ services:
       target: app
     image: renkman/webapi
     container_name: webapi
+    environment:
+      -NATS_URL: nats://nats:4222
     ports:
       - 8080:8080
     links:

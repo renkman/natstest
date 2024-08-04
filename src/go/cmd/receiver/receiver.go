@@ -25,8 +25,19 @@ func main() {
 	}
 }
 
+func initApp() string {
+	natsUrl, ok := os.LookupEnv("NATS_URL")
+	if ok {
+		return natsUrl
+	}
+	return nats.DefaultURL
+}
+
 func run(ctx context.Context) error {
-	nc, err := nats.Connect(nats.DefaultURL)
+	natsUrl := initApp()
+	fmt.Printf("Connect to nats: %s\n", string(natsUrl))
+
+	nc, err := nats.Connect(natsUrl)
 	if err != nil {
 		return err
 	}

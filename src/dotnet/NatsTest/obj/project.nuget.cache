@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VKJdCkHNV/g=",
+  "dgSpecHash": "T8Q9OqNcxcw=",
   "success": true,
   "projectFilePath": "/home/jan/src/go/src/github.com/renkman/natstest/src/dotnet/NatsTest/NatsTest.csproj",
   "expectedPackageFiles": [
@@ -9,13 +9,15 @@
     "/home/jan/.nuget/packages/microsoft.extensions.logging.abstractions/6.0.1/microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
     "/home/jan/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "/home/jan/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
-    "/home/jan/.nuget/packages/nats.client.core/2.3.2/nats.client.core.2.3.2.nupkg.sha512",
+    "/home/jan/.nuget/packages/nats.client.core/2.3.3/nats.client.core.2.3.3.nupkg.sha512",
     "/home/jan/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "/home/jan/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "/home/jan/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
     "/home/jan/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
     "/home/jan/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512",
-    "/home/jan/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "/home/jan/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "/home/jan/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
+    "/home/jan/.nuget/packages/system.text.json/8.0.4/system.text.json.8.0.4.nupkg.sha512"
   ],
   "logs": []
 }

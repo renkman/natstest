@@ -50,7 +50,7 @@
             },
             "NATS.Client.Core": {
               "target": "Package",
-              "version": "[2.3.2, )"
+              "version": "[2.3.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
