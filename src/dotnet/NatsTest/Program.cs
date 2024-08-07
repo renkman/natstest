@@ -1,52 +1,36 @@
-using System.Text.Json;
-using NATS.Client.Core;
+namespace NatsTest;
 
-const string NatsSubject = "message";
+using Microsoft.Extensions.Configuration;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+public class Program
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
-//app.UseHttpsRedirection();
+    public static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
+        var config = new ConfigurationBuilder()
+         .AddNatsConfiguration()
+         .AddEnvironmentVariables()
+         .Build();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+        // Add services to the container.
+        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Services.AddEndpointsApiExplorer()
+            .AddSwaggerGen()
+            .AddConfig(config)
+            .AddNatsTest()
+            .AddControllers();
 
-app.MapGet("/weatherforecast", async () =>
-{
-    await using var nats = new NatsConnection(new NatsOpts { Url = "nats://nats:4222" });
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    var message = JsonSerializer.Serialize(forecast);
-    await nats.PublishAsync(NatsSubject, message);
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+        var app = builder.Build();
 
-app.Run();
+        // Configure the HTTP request pipeline.
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+            app.MapControllers();
+        }
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        app.Run();
+    }
 }

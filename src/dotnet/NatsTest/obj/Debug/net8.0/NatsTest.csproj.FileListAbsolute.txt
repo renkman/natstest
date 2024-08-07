@@ -32,3 +32,5 @@
 /home/jan/src/go/src/github.com/renkman/natstest/src/dotnet/NatsTest/obj/Debug/net8.0/NatsTest.pdb
 /home/jan/src/go/src/github.com/renkman/natstest/src/dotnet/NatsTest/obj/Debug/net8.0/NatsTest.genruntimeconfig.cache
 /home/jan/src/go/src/github.com/renkman/natstest/src/dotnet/NatsTest/obj/Debug/net8.0/ref/NatsTest.dll
+/home/jan/src/go/src/github.com/renkman/natstest/src/dotnet/NatsTest/bin/Debug/net8.0/NATS.Client.Core.dll
+/home/jan/src/go/src/github.com/renkman/natstest/src/dotnet/NatsTest/bin/Debug/net8.0/config/nats.json

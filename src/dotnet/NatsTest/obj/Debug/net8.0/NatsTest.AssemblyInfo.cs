@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NatsTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+982e61e65a95a11ca3107f4e8e7aaf234e1543c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4ca95b513a2cb877bc65a78fbd478f20e07a57c")]
 [assembly: System.Reflection.AssemblyProductAttribute("NatsTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NatsTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
