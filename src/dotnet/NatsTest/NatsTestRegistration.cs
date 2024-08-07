@@ -2,12 +2,15 @@ namespace NatsTest;
 
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using NatsTest.Services;
+using NatsTest.Nats;
 using NatsTest.config;
 
 public static class NatsRegistration
 {
     public static IServiceCollection AddNatsTest(this IServiceCollection services)
     {
+        services.TryAddSingleton<INatsConnectionFactory, NatsConnectionFactory>();
+        services.TryAddSingleton<INatsSender, NatsSender>();
         services.TryAddSingleton<IMessageService, MessageService>();
 
         return services;

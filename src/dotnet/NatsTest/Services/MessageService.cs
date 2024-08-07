@@ -1,22 +1,19 @@
 namespace NatsTest.Services;
 
 using System.Threading.Tasks;
-using NATS.Client.Core;
-using NatsTest.config;
+using NatsTest.Nats;
 
 public class MessageService : IMessageService
 {
     const string NatsSubject = "message";
 
-    INatsConnection _nats;
+    INatsSender _natsSender;
 
-    public MessageService(NatsConfig natsConfig)
+    public MessageService(INatsSender natsSender)
     {
-        _nats = new NatsConnection(new NatsOpts { Url = natsConfig.Url });
+        _natsSender = natsSender;
     }
 
     public async Task SendMessage(string message)
-    {
-        await _nats.PublishAsync(NatsSubject, message);
-    }
+        => await _natsSender.PublishAsync(NatsSubject, message);
 }
