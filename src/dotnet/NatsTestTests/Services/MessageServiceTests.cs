@@ -1,6 +1,5 @@
 namespace NatsTestTests;
 
-using Microsoft.Extensions.Logging;
 using NatsTest.Services;
 using NatsTest.Nats;
 using Moq;

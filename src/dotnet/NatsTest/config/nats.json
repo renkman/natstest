@@ -1,5 +1,5 @@
 {
   "Nats": {
-    "Url": "nats://nats:4222"
+    "Url": "nats://localhost:4222"
   }
 }

@@ -18,7 +18,7 @@ public class MessageController : ControllerBase
     [Route("send")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult> SendMessage(string message)
+    public async Task<ActionResult> SendMessage([FromBody] string message)
     {
         await _messageService.SendMessage(message);
         return Ok();

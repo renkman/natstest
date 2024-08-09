@@ -6,20 +6,14 @@ public static class HostBuilderHelper
 {
     public static WebApplication CreateApp(string[] args)
     {
-        var config = new ConfigurationBuilder()
-         .AddNatsConfiguration()
-         .AddEnvironmentVariables()
-         .Build();
-
-
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Configuration.AddNatsConfiguration()
+            .AddEnvironmentVariables();
+
         builder.Services.AddEndpointsApiExplorer()
             .AddSwaggerGen()
-            .AddConfig(config)
-            .AddNatsTest()
+            .AddNatsTest(builder.Configuration)
             .AddControllers();
 
         builder.Logging.ClearProviders()
@@ -32,7 +26,6 @@ public static class HostBuilderHelper
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();

@@ -7,8 +7,11 @@ using NatsTest.config;
 
 public static class NatsRegistration
 {
-    public static IServiceCollection AddNatsTest(this IServiceCollection services)
+
+    public static IServiceCollection AddNatsTest(this IServiceCollection services, IConfiguration configuration)
     {
+        services.TryAddSingleton(configuration.GetSection("Nats").Get<NatsConfig>()!);
+
         services.TryAddSingleton<INatsConnectionFactory, NatsConnectionFactory>();
         services.TryAddSingleton<INatsSender, NatsSender>();
         services.TryAddSingleton<IMessageService, MessageService>();
@@ -16,16 +19,7 @@ public static class NatsRegistration
         return services;
     }
 
-    public static IServiceCollection AddConfig(this IServiceCollection services, IConfiguration configuration)
-    {
-        services.Configure<NatsConfig>(configuration.GetSection("Nats"));
-
-        services.TryAddSingleton(configuration.GetSection("Nats").Get<NatsConfig>()!);
-
-        return services;
-    }
-
-    public static ConfigurationBuilder AddNatsConfiguration(this ConfigurationBuilder configBuilder)
+    public static IConfigurationBuilder AddNatsConfiguration(this IConfigurationBuilder configBuilder)
     {
         configBuilder.AddJsonFile("config/nats.json");
         return configBuilder;
