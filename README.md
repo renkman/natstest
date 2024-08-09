@@ -1,2 +1,2 @@
 # natstest
-Go and NATS examples and tests
+Examples and tests with NATS using Go and ASP.net-apps.
